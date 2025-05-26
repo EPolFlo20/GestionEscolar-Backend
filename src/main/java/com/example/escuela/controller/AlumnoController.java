@@ -13,12 +13,13 @@ import java.util.List;
  * Permite crear, listar, obtener, actualizar y eliminar alumnos.
  * 
  * Anotaciones:
- * @RestController: Indica que esta clase es un controlador REST.
- * @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
- * @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
+ * - @RestController: Indica que esta clase es un controlador REST.
+ * - @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
+ * - @RequestMapping: Define la ruta base para todas las operaciones de este
+ * controlador.
  */
 @RestController
-@CrossOrigin(origins = "*") 
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/alumnos")
 public class AlumnoController {
 
@@ -29,7 +30,13 @@ public class AlumnoController {
     private AlumnoService alumnoService;
 
     /**
-     * Crea un nuevo alumno.
+     * Constructor por defecto para la clase AlumnoController.
+     */
+    public AlumnoController() {
+    }
+
+    /**
+     * Crea un nuevo alumno con los datos proporcionados en el DTO.
      * 
      * @param alumnoDTO Objeto que contiene los datos del alumno a crear.
      * @return El alumno creado.
@@ -63,7 +70,7 @@ public class AlumnoController {
     /**
      * Actualiza un alumno existente buscándolo por su ID.
      * 
-     * @param id Identificador del alumno a actualizar.
+     * @param id        Identificador del alumno a actualizar.
      * @param alumnoDTO Objeto que contiene los nuevos datos del alumno.
      * @return El alumno actualizado.
      */

@@ -14,9 +14,9 @@ import java.util.List;
  * Permite crear, listar, obtener, actualizar y eliminar asignaturas.
  * 
  * Anotaciones:
- * @RestController: Indica que esta clase es un controlador REST.
- * @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
- * @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
+ * - @RestController: Indica que esta clase es un controlador REST.
+ * - @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
+ * - @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
  */
 @RestController
 @CrossOrigin(origins = "*") 
@@ -30,7 +30,13 @@ public class AsignaturaController {
     private AsignaturaService asignaturaService;
 
     /**
-     * Constructor del controlador AsignaturaController.
+     * Constructor por defecto para la clase AsignaturaController.
+     */
+    public AsignaturaController() {
+    }
+
+    /**
+     * Crea una nueva asignatura con los datos proporcionados en el DTO.
      * 
      * @param asignaturaDTO El DTO que contiene los datos de la asignatura a crear.
      * @return La asignatura creada.

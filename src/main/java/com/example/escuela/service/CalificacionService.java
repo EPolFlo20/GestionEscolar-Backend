@@ -28,9 +28,8 @@ public interface CalificacionService {
     Calificacion actualizarCalificacion(Integer id, CalificacionDTO calificacionDTO);
 
     /**
-     * Elimina una calificación por su identificador.
-     *
-     * @param id El identificador de la calificación a eliminar.
+     * Obtiene todas las calificaciones registradas.
+     * @return Una lista de todas las calificaciones.
      */
     List<Calificacion> obtenerCalificaciones();
 
@@ -47,7 +46,5 @@ public interface CalificacionService {
      * @param idAsignatura El identificador de la asignatura cuyas calificaciones se desean obtener.
      * @return Una lista de calificaciones asociadas a la asignatura.
      */
-    List<Calificacion> obtenerCalificacionesPorAsignatura(Integer idAsignatura);
-    
+    List<Calificacion> obtenerCalificacionesPorAsignatura(Integer idAsignatura);   
 }
-

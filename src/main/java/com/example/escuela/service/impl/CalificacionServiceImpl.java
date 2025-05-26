@@ -44,6 +44,12 @@ public class CalificacionServiceImpl implements CalificacionService {
     private AsignaturaRepository asignaturaRepository;
 
     /**
+     * Constructor por defecto para la clase CalificacionServiceImpl.
+     */
+    public CalificacionServiceImpl() {
+    }
+
+    /**
      * Asigna una calificación a un alumno en una asignatura específica.
      *
      * @param calificacionDTO Objeto que contiene los datos de la calificación a asignar.

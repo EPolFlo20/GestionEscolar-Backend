@@ -35,6 +35,12 @@ public class AsignaturaServiceImpl implements AsignaturaService {
     private GradoRepository gradoRepository;
 
     /**
+     * Constructor por defecto para la clase AsignaturaServiceImpl.
+     */
+    public AsignaturaServiceImpl() {
+    }
+
+    /**
      * Crea una nueva asignatura en la base de datos.
      *
      * @param asignaturaDTO Objeto que contiene los datos de la asignatura a crear.

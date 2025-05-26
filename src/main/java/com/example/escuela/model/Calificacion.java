@@ -8,14 +8,20 @@ import lombok.Data;
  * Contiene información sobre el alumno, la asignatura y la calificación obtenida.
  * 
  * Anotaciones:
- * @Entity: Indica que esta clase es una entidad JPA.
- * @Table: Especifica la tabla de la base de datos a la que está mapeada esta entidad.
- * @Data: Genera automáticamente los métodos getter, setter, toString, equals y hashCode.
+ * - @Entity: Indica que esta clase es una entidad JPA.
+ * - @Table: Especifica la tabla de la base de datos a la que está mapeada esta entidad.
+ * - @Data: Genera automáticamente los métodos getter, setter, toString, equals y hashCode.
  */
 @Entity
 @Table(name = "calificaciones")
 @Data
 public class Calificacion {
+
+    /**
+     * Constructor por defecto para la clase Calificacion.
+     */
+    public Calificacion() {
+    }
 
     /**
      * Identificador único de la calificación.

@@ -34,6 +34,13 @@ public class AlumnoServiceImpl implements AlumnoService {
     private GradoRepository gradoRepository;
 
     /**
+     * Constructor por defecto para la clase AlumnoServiceImpl.
+     */
+    public AlumnoServiceImpl() {
+    }
+        
+
+    /**
      * Crea un nuevo alumno en la base de datos.
      * 
      * @param alumnoDTO Objeto que contiene los datos del alumno a crear.

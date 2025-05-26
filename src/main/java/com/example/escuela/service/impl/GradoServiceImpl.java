@@ -23,6 +23,12 @@ public class GradoServiceImpl implements GradoService {
     private GradoRepository gradoRepository;
 
     /**
+     * Constructor por defecto para la clase GradoServiceImpl.
+     */
+    public GradoServiceImpl() {
+    }
+
+    /**
      * Crea un nuevo grado en la base de datos.
      *
      * @param grado Objeto que contiene los datos del grado a crear.

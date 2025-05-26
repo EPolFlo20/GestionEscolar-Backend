@@ -13,9 +13,9 @@ import java.util.List;
  * Permite asignar, actualizar y obtener calificaciones de alumnos en asignaturas.
  * 
  * Anotaciones:
- * @RestController: Indica que esta clase es un controlador REST.
- * @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
- * @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
+ * - @RestController: Indica que esta clase es un controlador REST.
+ * - @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
+ * - @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
  */
 @RestController
 @CrossOrigin(origins = "*") 
@@ -27,6 +27,12 @@ public class CalificacionController {
      */
     @Autowired
     private CalificacionService calificacionService;
+
+    /**
+     * Constructor por defecto para la clase CalificacionController.
+     */
+    public CalificacionController() {
+    }
 
     /**
      * Asigna una calificación a un alumno en una asignatura.
@@ -64,7 +70,7 @@ public class CalificacionController {
     /**
      * Obtiene una calificación por el ID del alumno.
      * 
-     * @param id Identificador del alumno.
+     * @param idAlumno Identificador del alumno.
      * @return La calificación correspondiente al ID proporcionado.
      */
     @GetMapping("/alumno/{idAlumno}")

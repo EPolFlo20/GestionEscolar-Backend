@@ -12,9 +12,9 @@ import java.util.List;
  * Permite crear, listar, obtener y eliminar grados.
  * 
  * Anotaciones:
- * @RestController: Indica que esta clase es un controlador REST.
- * @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
- * @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
+ * - @RestController: Indica que esta clase es un controlador REST.
+ * - @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
+ * - @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
  */
 @RestController
 @CrossOrigin(origins = "*") 
@@ -27,6 +27,12 @@ public class GradoController {
      */
     @Autowired
     private GradoService gradoService;
+
+    /**
+     * Constructor por defecto para la clase GradoController.
+     */
+    public GradoController() {
+    }
 
     /**
      * Crea un nuevo grado.
