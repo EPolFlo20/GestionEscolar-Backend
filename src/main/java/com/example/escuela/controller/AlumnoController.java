@@ -91,8 +91,8 @@ public class AlumnoController {
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizarAlumno(@PathVariable Integer id, @RequestBody AlumnoDTO alumnoDTO) {
         try {
-            Alumno alumnoCreado = alumnoService.actualizarAlumno(id, alumnoDTO);
-            return ResponseEntity.ok(alumnoCreado);
+            Alumno alumnoActualizado = alumnoService.actualizarAlumno(id, alumnoDTO);
+            return ResponseEntity.ok(alumnoActualizado);
         } catch (AlumnoExcepcion | GradoExcepcion e) {
             Map<String, String> error = new HashMap<>();
             error.put("mensaje", e.getMessage());
@@ -105,7 +105,7 @@ public class AlumnoController {
      * 
      * @param id Identificador del alumno a eliminar.
      * @return Una respuesta con el alumno eliminado o un mensaje de error si ocurre
-     * una excepción.
+     *         una excepción.
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarAlumno(@PathVariable Integer id) {
