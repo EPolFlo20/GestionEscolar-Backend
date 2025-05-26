@@ -132,4 +132,41 @@ public class CalificacionController {
             return ResponseEntity.badRequest().body(error);
         }
     }
+
+    /**
+     * Elimina una calificación por su ID.
+     * 
+     * @param id Identificador de la calificación a eliminar.
+     * @return La calificación elimnada.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminarCalificacion(@PathVariable Integer id) {
+        try {
+            Calificacion calificacionEliminada = calificacionService.obtenerCalificacionPorId(id);
+            calificacionService.eliminarCalificacion(id);
+            return ResponseEntity.ok(calificacionEliminada);
+        } catch (CalificacionExcepcion e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
+    }
+
+    /**
+     * Obtiene una calificación por su ID.
+     * 
+     * @param id Identificador de la calificación a obtener.
+     * @return La calificación correspondiente al ID proporcionado.
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerCalificacionPorId(@PathVariable Integer id) {
+        try {
+            Calificacion calificacion = calificacionService.obtenerCalificacionPorId(id);
+            return ResponseEntity.ok(calificacion);
+        } catch (CalificacionExcepcion e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
+    }
 }

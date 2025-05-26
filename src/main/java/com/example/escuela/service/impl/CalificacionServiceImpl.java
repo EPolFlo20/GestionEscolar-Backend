@@ -176,4 +176,37 @@ public class CalificacionServiceImpl implements CalificacionService {
                 .orElseThrow(() -> new AsignaturaExcepcion("Asignatura no encontrada con id: " + idAsignatura));
         return calificacionRepository.findByAsignaturaId(asignatura.getId());
     }
+
+    /**
+     * Elimina una calificación por su identificador.
+     * 
+     * @param id El identificador de la calificación a eliminar.
+     * @throws CalificacionExcepcion Si ocurre un error al intentar eliminar la
+     *                               calificación, por ejemplo, si está asociada a
+     *                               un grado o alumno.
+     */
+    @Override
+    public void eliminarCalificacion(Integer id) {
+        try {
+            calificacionRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new CalificacionExcepcion(
+                    "Error al eliminar la asignatura. Asegurese que no esté asociada a un grado o alumno.");
+        }
+    }
+
+    /**
+     * Obtiene una calificación por su identificador.
+     * 
+     * @param id El identificador de la calificación a obtener.
+     * @return La calificación correspondiente al identificador proporcionado.
+     * @throws CalificacionExcepcion Si la calificación no se encuentra en la base
+     *                               de datos.
+     */
+    @Override
+    public Calificacion obtenerCalificacionPorId(Integer id) {
+        return calificacionRepository.findById(id)
+                .orElseThrow(() -> new CalificacionExcepcion("Calificación no encontrada con id: " + id));
+    }
+
 }

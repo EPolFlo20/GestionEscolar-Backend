@@ -47,4 +47,19 @@ public interface CalificacionService {
      * @return Una lista de calificaciones asociadas a la asignatura.
      */
     List<Calificacion> obtenerCalificacionesPorAsignatura(Integer idAsignatura);   
+
+    /**
+     * Elimina una calificación por su identificador.
+     *
+     * @param id El identificador de la calificación a eliminar.
+     */
+    void eliminarCalificacion(Integer id);
+
+    /**
+     * Obtiene una calificación por su identificador.
+     *
+     * @param id El identificador de la calificación a obtener.
+     * @return La calificación correspondiente al identificador proporcionado.
+     */
+    Calificacion obtenerCalificacionPorId(Integer id);
 }

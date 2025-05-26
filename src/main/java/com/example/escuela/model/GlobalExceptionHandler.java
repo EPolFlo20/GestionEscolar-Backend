@@ -31,8 +31,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Map<String, String>> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
         Map<String, String> error = new HashMap<>();
-        error.put("error", "Tipo de parámetro inválido");
-        error.put("detalle", ex.getMessage());
+        error.put("mensaje", "Tipo de parámetro inválido");
+        error.put("error", ex.getMessage());
         return ResponseEntity.badRequest().body(error);
     }
 
