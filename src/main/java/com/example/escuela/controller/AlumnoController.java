@@ -77,8 +77,16 @@ public class AlumnoController {
      * @return El alumno correspondiente al ID proporcionado.
      */
     @GetMapping("/{id}")
-    public Alumno obtenerAlumno(@PathVariable Integer id) {
-        return alumnoService.obtenerAlumnoPorId(id);
+    public ResponseEntity<?> obtenerAlumno(@PathVariable Integer id) {
+        try {
+            Alumno alumno = alumnoService.obtenerAlumnoPorId(id);
+            return ResponseEntity.ok(alumno);
+        } catch (AlumnoExcepcion e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
+
     }
 
     /**
