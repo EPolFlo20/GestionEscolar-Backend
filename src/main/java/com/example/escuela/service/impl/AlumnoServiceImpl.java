@@ -149,7 +149,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     @Override
     public Alumno obtenerAlumnoPorId(Integer id) {
         return alumnoRepository.findById(id)
-                .orElseThrow(() -> new AlumnoExcepcion("No se puede eliminar, alumno no encontrado con id " + id));
+                .orElseThrow(() -> new AlumnoExcepcion("No se econtró al alumno con id " + id));
     }
 
     /**
