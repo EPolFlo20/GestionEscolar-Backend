@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleAlumnoExcepcion(AlumnoExcepcion ex) {
         Map<String, String> error = new HashMap<>();
         error.put("error", "Error con el alumno");
-        error.put("detalle", ex.getMessage());
+        error.put("mensaje", ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
@@ -74,7 +74,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleGradoExcepcion(GradoExcepcion ex) {
         Map<String, String> error = new HashMap<>();
         error.put("error", "Error con el grado");
-        error.put("detalle", ex.getMessage());
+        error.put("mensaje", ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
@@ -83,7 +83,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleGeneralException(Exception ex) {
         Map<String, String> error = new HashMap<>();
         error.put("error", "Error interno");
-        error.put("detalle", ex.getMessage());
+        error.put("mensaje", ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

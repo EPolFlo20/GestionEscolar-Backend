@@ -18,6 +18,15 @@ public interface GradoService {
     Grado crearGrado(Grado grado);
 
     /**
+     * Actualiza un grado existente por su identificador.
+     *
+     * @param id El identificador del grado a actualizar.
+     * @param grado Objeto que contiene los nuevos datos del grado.
+     * @return El grado actualizado.
+     */
+    Grado actualizarGrado(Integer id, Grado grado);
+
+    /**
      * Obtiene un grado por su identificador.
      *
      * @param id El identificador del grado a obtener.

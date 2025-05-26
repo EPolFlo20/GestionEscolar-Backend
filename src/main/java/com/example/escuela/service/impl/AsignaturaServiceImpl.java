@@ -133,7 +133,7 @@ public class AsignaturaServiceImpl implements AsignaturaService {
         try {
             asignaturaRepository.deleteById(id);
         } catch (Exception e) {
-            throw new AsignaturaExcepcion("Error al eliminar la asignatura. No se econtró asignatura con id: " + id);
+            throw new AsignaturaExcepcion("Error al eliminar la asignatura. Asegurese que no esté asociada a un grado o alumno.");
         }
     }
 

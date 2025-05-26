@@ -14,10 +14,11 @@ import java.util.List;
  * Anotaciones:
  * - @RestController: Indica que esta clase es un controlador REST.
  * - @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
- * - @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
+ * - @RequestMapping: Define la ruta base para todas las operaciones de este
+ * controlador.
  */
 @RestController
-@CrossOrigin(origins = "*") 
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/grados")
 public class GradoController {
 
@@ -46,7 +47,20 @@ public class GradoController {
     }
 
     /**
+     * Actualiza un grado existente por su ID.
+     * 
+     * @param id    Identificador del grado a actualizar.
+     * @param grado Objeto que contiene los nuevos datos del grado.
+     * @return El grado actualizado.
+     */
+    @PutMapping("/{id}")
+    public Grado actualizarGrado(@PathVariable Integer id, @RequestBody Grado grado) {
+        return gradoService.actualizarGrado(id, grado);
+    }
+
+    /**
      * Lista todos los grados.
+     * 
      * @return Una lista de todos los grados disponibles.
      */
     @GetMapping
