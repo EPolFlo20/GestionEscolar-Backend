@@ -10,8 +10,8 @@ import java.util.List;
  * Proporciona métodos para realizar operaciones CRUD sobre la tabla "asignaturas".
  * 
  * Anotaciones:
- * @Repository: Indica que esta interfaz es un repositorio de Spring Data JPA.
- * @JpaRepository: Proporciona métodos predefinidos para operaciones CRUD y consultas personalizadas.
+ * - @Repository: Indica que esta interfaz es un repositorio de Spring Data JPA.
+ * - @JpaRepository: Proporciona métodos predefinidos para operaciones CRUD y consultas personalizadas.
  */
 public interface AsignaturaRepository extends JpaRepository<Asignatura, Integer> {
 

@@ -18,5 +18,10 @@ public class CalificacionDTO {
     private Integer id_alumno;
     private Integer id_asignatura;
     private Float calificacion;
-
+    
+    /**
+     * Constructor por defecto para la clase CalificacionDTO.
+     */
+    public CalificacionDTO() {
+    }
 }

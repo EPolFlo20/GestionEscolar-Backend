@@ -16,4 +16,10 @@ import lombok.Data;
 public class AsignaturaDTO {
     private String nombre;
     private Integer id_grado;
+    
+    /**
+     * Constructor por defecto para la clase AsignaturaDTO.
+     */
+    public AsignaturaDTO() {
+    }
 }

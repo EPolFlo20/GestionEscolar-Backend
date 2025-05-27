@@ -1,0 +1,8 @@
+com.example.dto
+com.example.escuela
+com.example.escuela.controller
+com.example.escuela.excepciones
+com.example.escuela.model
+com.example.escuela.repository
+com.example.escuela.service
+com.example.escuela.service.impl

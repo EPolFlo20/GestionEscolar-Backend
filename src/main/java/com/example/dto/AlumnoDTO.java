@@ -25,4 +25,12 @@ public class AlumnoDTO {
 
     private Integer id_grado;
 
+    /**
+     * Constructor por defecto para la clase AlumnoDTO.
+     */
+    public AlumnoDTO() {
+    }
+
+    
+
 }

@@ -1,24 +1,31 @@
 package com.example.escuela.controller;
 
 import com.example.dto.AlumnoDTO;
+import com.example.escuela.excepciones.AlumnoExcepcion;
+import com.example.escuela.excepciones.GradoExcepcion;
+import com.example.escuela.excepciones.MatriculaExcepcion;
 import com.example.escuela.model.Alumno;
 import com.example.escuela.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Controlador REST para manejar las operaciones relacionadas con los alumnos.
  * Permite crear, listar, obtener, actualizar y eliminar alumnos.
  * 
  * Anotaciones:
- * @RestController: Indica que esta clase es un controlador REST.
- * @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
- * @RequestMapping: Define la ruta base para todas las operaciones de este controlador.
+ * - @RestController: Indica que esta clase es un controlador REST.
+ * - @CrossOrigin: Permite solicitudes de origen cruzado desde cualquier origen.
+ * - @RequestMapping: Define la ruta base para todas las operaciones de este
+ * controlador.
  */
 @RestController
-@CrossOrigin(origins = "*") 
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/alumnos")
 public class AlumnoController {
 
@@ -29,14 +36,28 @@ public class AlumnoController {
     private AlumnoService alumnoService;
 
     /**
-     * Crea un nuevo alumno.
+     * Constructor por defecto para la clase AlumnoController.
+     */
+    public AlumnoController() {
+    }
+
+    /**
+     * Crea un nuevo alumno con los datos proporcionados en el DTO.
      * 
      * @param alumnoDTO Objeto que contiene los datos del alumno a crear.
-     * @return El alumno creado.
+     * @return Una respuesta con el alumno creado o un mensaje de error si ocurre
+     *         una excepción.
      */
     @PostMapping
-    public Alumno crearAlumno(@RequestBody AlumnoDTO alumnoDTO) {
-        return alumnoService.crearAlumno(alumnoDTO);
+    public ResponseEntity<?> crearAlumno(@RequestBody AlumnoDTO alumnoDTO) {
+        try {
+            Alumno alumnoCreado = alumnoService.crearAlumno(alumnoDTO);
+            return ResponseEntity.ok(alumnoCreado);
+        } catch (MatriculaExcepcion | GradoExcepcion e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
     }
 
     /**
@@ -56,33 +77,54 @@ public class AlumnoController {
      * @return El alumno correspondiente al ID proporcionado.
      */
     @GetMapping("/{id}")
-    public Alumno obtenerAlumno(@PathVariable Integer id) {
-        return alumnoService.obtenerAlumnoPorId(id);
+    public ResponseEntity<?> obtenerAlumno(@PathVariable Integer id) {
+        try {
+            Alumno alumno = alumnoService.obtenerAlumnoPorId(id);
+            return ResponseEntity.ok(alumno);
+        } catch (AlumnoExcepcion e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
+
     }
 
     /**
      * Actualiza un alumno existente buscándolo por su ID.
      * 
-     * @param id Identificador del alumno a actualizar.
+     * @param id        Identificador del alumno a actualizar.
      * @param alumnoDTO Objeto que contiene los nuevos datos del alumno.
-     * @return El alumno actualizado.
+     * @return Una respuesta con el alumno actualizado o un mensaje de error si
      */
     @PutMapping("/{id}")
-    public Alumno actualizarAlumno(@PathVariable Integer id, @RequestBody AlumnoDTO alumnoDTO) {
-        return alumnoService.actualizarAlumno(id, alumnoDTO);
+    public ResponseEntity<?> actualizarAlumno(@PathVariable Integer id, @RequestBody AlumnoDTO alumnoDTO) {
+        try {
+            Alumno alumnoActualizado = alumnoService.actualizarAlumno(id, alumnoDTO);
+            return ResponseEntity.ok(alumnoActualizado);
+        } catch (AlumnoExcepcion | GradoExcepcion e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
     }
 
     /**
      * Elimina un alumno por su ID.
      * 
      * @param id Identificador del alumno a eliminar.
-     * @return El alumno eliminado.
+     * @return Una respuesta con el alumno eliminado o un mensaje de error si ocurre
+     *         una excepción.
      */
     @DeleteMapping("/{id}")
-    public Alumno eliminarAlumno(@PathVariable Integer id) {
-        Alumno alumno = alumnoService.obtenerAlumnoPorId(id);
-        alumnoService.eliminarAlumno(id);
-
-        return alumno;
+    public ResponseEntity<?> eliminarAlumno(@PathVariable Integer id) {
+        try {
+            Alumno alumnoEliminado = alumnoService.obtenerAlumnoPorId(id);
+            alumnoService.eliminarAlumno(id);
+            return ResponseEntity.ok(alumnoEliminado);
+        } catch (AlumnoExcepcion e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
     }
 }

@@ -19,4 +19,10 @@ public class EscuelaApplication {
 		SpringApplication.run(EscuelaApplication.class, args);
 	}
 
+	/**
+	 * Constructor por defecto para la clase EscuelaApplication.
+	 */
+	public EscuelaApplication() {
+	}
+
 }
